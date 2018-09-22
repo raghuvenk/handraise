@@ -13,7 +13,7 @@ while(True):
     ret, frame, countours, defects = detectHand(frame, hist, sketchContours = True, computeDefects = True)
     fingertips = extractFingertips(defects, countours, 50, right = True)
     plot(frame, fingertips)
-    frame = cv2.resize(frame, (0,0), fx=2, fy = 2)
+    #frame = cv2.resize(frame, (0,0), fx = 2, fy = 2)
     
     # Display the resulting frame
     cv2.imshow('frame', frame)
