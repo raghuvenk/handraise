@@ -4,8 +4,9 @@ from random import randint
 from handy import *
 
 raiseHeight = 160
-faceWidth = 90
-resize = 1
+faceWidth = 150
+faceHeight = faceWidth
+resize = 2
 
 hist = captureHistogram(0)
 cap = cv2.VideoCapture(0)
@@ -25,11 +26,11 @@ while(True):
         w = int(countours[0][0][0])
         if h < raiseHeight:
             topRightX = max(w - faceWidth, 0)
-            crop_frame = frame[raiseHeight: capHeight - 1, topRightX: w]
+            crop_frame = frame[raiseHeight: raiseHeight + faceHeight, topRightX: w]
             cv2.imwrite("targetFace.jpg", crop_frame)
     #drawing on the frame
             frame = cv2.putText(frame, "Raised!", (topRightX, raiseHeight), font, 3, (0, 0, 255), 2, cv2.LINE_AA)
-            frame = cv2.rectangle(frame, (topRightX, capHeight - 1), (w, raiseHeight + 1), (255, 0, 0), 1)        
+            frame = cv2.rectangle(frame, (topRightX, raiseHeight + 1), (w, raiseHeight + faceHeight), (255, 0, 255), 1)        
 
     frame = cv2.line(frame, (0, raiseHeight), (int(capWidth - 1), raiseHeight), (255, 255, 255), 1)
     plot(frame, fingertips)
