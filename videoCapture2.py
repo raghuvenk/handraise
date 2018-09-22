@@ -26,10 +26,9 @@ while(True):
         if h < raiseHeight:
             topRightX = max(w - faceWidth, 0)
             crop_frame = frame[raiseHeight: capHeight - 1, topRightX: w]
-            print([capHeight - 1,raiseHeight], [topRightX, w])
             cv2.imwrite("targetFace.jpg", crop_frame)
     #drawing on the frame
-            cv2.putText(frame, "Raised!", (topRightX, raiseHeight), font, 3, (0, 0, 255), 2, cv2.LINE_AA)
+            frame = cv2.putText(frame, "Raised!", (topRightX, raiseHeight), font, 3, (0, 0, 255), 2, cv2.LINE_AA)
             frame = cv2.rectangle(frame, (topRightX, capHeight - 1), (w, raiseHeight + 1), (255, 0, 0), 1)        
 
     frame = cv2.line(frame, (0, raiseHeight), (int(capWidth - 1), raiseHeight), (255, 255, 255), 1)
