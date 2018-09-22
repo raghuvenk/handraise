@@ -4,6 +4,7 @@ from random import randint
 from handy import *
 
 hist = captureHistogram(0)
+print(hist)
 cap = cv2.VideoCapture(0)
 
 while(True):
